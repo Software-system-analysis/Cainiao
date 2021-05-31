@@ -1,0 +1,10 @@
+<!--pages/list/list.wxml-->
+<view>
+  <text>分仓编号：{{num}}</text>
+</view>
+<view>
+  <text>收件号码：{{phonenum}}</text>
+</view>
+<view>
+  <text>运单编号：{{msg}}</text>
+</view>

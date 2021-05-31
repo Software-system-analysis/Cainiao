@@ -1,0 +1,27 @@
+<!--pages/test/test.wxml-->
+
+<view class="container1">
+<view class='form-list'>
+  
+  <text>分仓编号:</text>
+  <input type='text' id="number" value='{{num}}'></input>
+  
+</view>
+
+<view class='form-list'>
+  
+  <text>收件号码:</text>
+  <input type='text' id="number" value='{{phonenum}}'></input>
+  
+</view>
+
+<view class='form-list'>
+  
+  <text>运单编号:</text>
+  <input type='text' id="number" value='{{scanCodeMsg}}'></input>
+  <image class='scan' bindtap='scanCode' src='../test/img/scannum.jpg' mode='widthFix'></image>
+  
+</view>
+
+<button id="submit" bindtap="buttonListen">保 存</button>
+</view>
