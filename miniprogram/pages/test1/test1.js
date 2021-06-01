@@ -1,4 +1,4 @@
-// pages/demo/demo.js
+// pages/test1/test1.js
 Page({
 
   /**
@@ -12,18 +12,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
-    wx.getUserInfo({
-      success: this.setUserInfo.bind(this)
-    })
-    this.setData({
 
-    })
-
-  },
-
-  setUserInfo: function(res){
-    this.setData({user: res.userInfo})
   },
 
   /**
@@ -37,9 +26,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    wx.hideTabBar({
-      animation: true,
-    })
 
   },
 
@@ -47,7 +33,6 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
 
   },
 
@@ -77,13 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-
-  goto_index: function(res){
-    wx.switchTab({
-      url: '../test/test',
-    })
   }
-
-  
 })
