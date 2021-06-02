@@ -108,13 +108,13 @@ Page({
             if (password !== userinfo[i].password) {  //判断密码是否正确
               wx.showToast({
                 title: '密码错误！！',
-                icon: 'loading',
+                icon: 'none',
                 duration: 500
               })
             } else {
-              console.log('登陆成功！')
+              console.log('登录成功！')
               wx.showToast({
-                title: '登陆成功！！',
+                title: '登录成功！！',
                 icon: 'success',
                 duration: 500
               })
@@ -124,8 +124,8 @@ Page({
             }
           }else{   //不存在
             wx.showToast({
-              title: '无此用户名！！',
-              icon: 'loading',
+              title: '此用户名不存在！！',
+              icon: 'none',
               duration: 500
             })
           }

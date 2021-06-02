@@ -10,7 +10,7 @@
     <input bind:change='inputPassword' type="password" name="password" id="pass1" placeholder="输入您的密码" value="{{password}}"></input>
   </view>
 
-  <button bindtap="goto_index" id="btn1" form-type="submit"><text>登陆</text></button>
+  <button bindtap="goto_index" id="btn1" form-type="submit"><text>登录</text></button>
   </form>
 
   <button bindtap="goto_zhuce" id="btn2"><text>注册</text></button>
