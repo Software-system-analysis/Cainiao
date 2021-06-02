@@ -1,24 +1,24 @@
-<!--pages/test/test.wxml-->
+<!--pages/test/test.wxml ！！！主页！！！-->
 
 <view class="container1">
 <view class='form-list'>
   
   <text>分仓编号:</text>
-  <input type='text' id="number" value='{{num}}'></input>
+  <input bind:change='inputNum' type='text' id="number" value='{{num}}'></input>
   
 </view>
 
 <view class='form-list'>
   
   <text>收件号码:</text>
-  <input type='text' id="number" value='{{phonenum}}'></input>
+  <input bind:change='inputPhone' type='text' id="number" value='{{phonenum}}'></input>
   
 </view>
 
 <view class='form-list'>
   
   <text>运单编号:</text>
-  <input type='text' id="number" value='{{scanCodeMsg}}'></input>
+  <input bind:change='inputMsg' type='text' id="number" value='{{scanCodeMsg}}'></input>
   <image class='scan' bindtap='scanCode' src='../test/img/scannum.jpg' mode='widthFix'></image>
   
 </view>

@@ -1,13 +1,25 @@
 // pages/list/list.js
+const app = new getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    num:null,
-    phonenum:null,
-    msg:null
+    list: [{
+      list_name: "",
+      list_title: "此处应该是一个快递编号",
+      list_img: ""
+    }, {
+      list_name: "",
+      list_title: "此处应该是一个快递编号",
+      list_img: ""
+    }, {
+      list_name: "",
+      list_title: "此处应该是一个快递编号",
+      list_img: ""
+    }]
 
   },
 

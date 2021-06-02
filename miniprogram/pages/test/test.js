@@ -1,14 +1,34 @@
 // pages/test/test.js
+
+let app = getApp();
+const db = wx.cloud.database();
+const expressage = db.collection('expressage');
+let num = null;
+let phonenum = null;
+let scanCodeMsg = null;
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    num:"",
-    phonenum:"",
-    scanCodeMsg:""
   },
+
+  inputNum:function(event){
+    num = event.detail.value;
+    console.log('ing')
+  },
+
+  inputPhone:function(event){
+    phonenum = event.detail.value
+  },
+
+  inputMsg:function(event){
+    scanCodeMsg = event.detail.value
+  },
+
+
   scanCode: function() {
     var that = this;
     wx.scanCode({ //扫描API
@@ -25,11 +45,33 @@ Page({
     })
   },
 
-  buttonListen: function(){
+  buttonListen: function(res){
     var that = this;
+    db.collection('expressage').add({
+      data:{
+        num: num,
+        phonenum: phonenum,
+        scanCodeMsg: scanCodeMsg
+      },
+      success(res){
+        console.log('success')
+      },
+      fail(res){
+        console.log('fail')
+      }
+      
+      
+    });
+    
+    
+    this.setData({
+      num: null,
+      phonenum: null,
+      scanCodeMsg:null
+    })
     wx.switchTab({
       url: '../list/list?numData='+that.data.num+'&phonenumData='+that.data.phonenum+'&msgData='+that.data.scanCodeMsg+'',
-    })
+    });
   },
   /**
    * 生命周期函数--监听页面加载
