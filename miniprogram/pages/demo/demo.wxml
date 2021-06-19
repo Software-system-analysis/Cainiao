@@ -16,7 +16,7 @@
     <text style="position: relative; left: 338rpx; top: -235rpx">登录</text>
   </form>
 
-  <button bindtap="goto_zhuce" id="btn2"><text>注册</text></button>
+  <button bindtap="goto_register" id="btn2" form-type="submit"><text>注册</text></button>
   <button bindtap="goto_update" id="btn3" style="position: relative; left: 200rpx; top: 275rpx"><text>忘记密码</text></button>
 
 

@@ -5,7 +5,8 @@
     "pages/list/list",
     "pages/info/info",
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/register/register"
   ],
   "window":{
     "backgroundTextStyle":"light",

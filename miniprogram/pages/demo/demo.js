@@ -132,7 +132,10 @@ Page({
         }
       }
     })
+  },
+  goto_register:function(res){
+    wx.navigateTo({
+      url: '../register/register',
+    })
   }
-
-  
 })
