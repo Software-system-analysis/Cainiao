@@ -1,12 +1,16 @@
 // pages/register/register.js
-const db = wx.cloud.database();
-const user = db.collection('staff');
+const dbStaff = wx.cloud.database();
+const dbUser=wx.cloud.database();
+const user = dbUser.collection('user');
+const staff=dbStaff.collection('staff');
+var userKind;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    
 
   },
   goto_register_newuser:function(res){
@@ -66,5 +70,9 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  changeUserKind: function (e) {
+    userKind=e.detail.value;
+    console.log('radio发生change事件，携带value值为：', userKind)
   }
 })
