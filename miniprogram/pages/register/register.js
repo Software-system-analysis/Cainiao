@@ -153,17 +153,38 @@ Page({
             console.log("success "+register_name+' '+register_password+' '+confirm_password+' '+user_kind);
             let new_user=this.registerFactory(user_kind,user_register_info.length+1);
             console.log("factory has produced a new accout:"+new_user.name+' '+new_user.password+' '+new_user.kind+' '+new_user.id);
+            if(new_user.kind == "总仓管理员"){
             user_register.add({
               data:{
                 password:new_user.password,
-                user_id:new_user.id,
+                user_id:1,
                 user_name:new_user.name,
                 userid:new_user.kind
               },
               success(res){
                 console.log('注册成功');
               }
-            })
+            })}
+            if(new_user.kind == "分仓管理员"){
+              user_register.add({
+                data:{
+                  password:new_user.password,
+                  user_id:2,
+                  user_name:new_user.name,
+                  userid:new_user.kind
+                },
+                success(res){
+                  console.log('注册成功');
+                }
+              })
+              wx.showToast({
+                title: '注册成功！',
+                icon: 'none',
+                duration: 1000
+              }) 
+              wx.navigateTo({   //跳转首页
+                url: '../demo/demo',  
+              })}
           }      
       }
       else{
