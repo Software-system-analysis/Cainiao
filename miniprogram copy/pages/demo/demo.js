@@ -108,41 +108,31 @@ Page({
             if (password !== userinfo[i].password) {  //判断密码是否正确
               wx.showToast({
                 title: '密码错误！！',
-                icon: 'none',
+                icon: 'loading',
                 duration: 500
               })
             } else {
-
-              console.log('登录成功！')
-
-              wx.setStorageSync('userid', userinfo[i].user_id)//缓存rolrid
-
+              console.log('登陆成功！')
               wx.showToast({
-                title: '登录成功！！',
+                title: '登陆成功！！',
                 icon: 'success',
                 duration: 500
               })
-              if(userinfo[i].user_id == 1){
-                wx.switchTab({   //跳转首页
+              wx.switchTab({   //跳转首页
                 url: '../test/test',  //这里的URL是你登录完成后跳转的界面
               })
-              }
-              if(userinfo[i].user_id == 2){
-                wx.switchTab({   //跳转首页
-                  url: '../scan1/scan1',  //这里的URL是你登录完成后跳转的界面
-                })
-              }
             }
-
+          }else{   //不存在
+            wx.showToast({
+              title: '无此用户名！！',
+              icon: 'loading',
+              duration: 500
+            })
           }
         }
       }
     })
-  },
-  goto_register:function(res){
-    wx.navigateTo({
-      url: '../register/register',
-    })
-
   }
+
+  
 })

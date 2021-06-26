@@ -1,5 +1,4 @@
-// pages/list/list.js
-const app = new getApp();
+// pages/info1/info1.js
 
 Page({
 
@@ -7,43 +6,25 @@ Page({
    * 页面的初始数据
    */
   data: {
-    list: [{
-      list_name: "",
-      list_title: "此处应该是一个快递编号",
-      list_img: ""
-    }, {
-      list_name: "",
-      list_title: "此处应该是一个快递编号",
-      list_img: ""
-    }, {
-      list_name: "",
-      list_title: "此处应该是一个快递编号",
-      list_img: ""
-    }]
-
+    myinfo:null
   },
 
   /**
-   * 生命周期函数--监听页面加载
+   * 生命周期函数--监听页面加载 
    */
   onLoad: function (options) {
-    var that = this;
-    that.setData({
-      num: options.numData,
-      phonenum: options.phonenumData,
-      msg:options.msgData
-    })
-
+    var stu = wx.getStorageSync('student');
+    this.setData({ myinfo: stu});
   },
 
-  /**
+   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
 
   },
 
-  /**
+   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
@@ -87,5 +68,37 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  exit:function(e){
+    wx.showModal({
+      title: '提示',
+      content: '是否确认退出',
+      success: function (res) {
+        if (res.confirm) {
+          // console.log('用户点击确定')
+          wx.removeStorageSync('student');
+          //页面跳转
+          wx.redirectTo({
+            url: '../demo/demo',
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+  },
+resetpwd:function(e){
+    var no=this.data.myinfo.no;
+    wx.navigateTo({
+      url: '../password/password?no=' + no,
+    })
+  },
+  setemail: function (e) {
+    var no = this.data.myinfo.no;
+    wx.navigateTo({
+      url: '../email/email?no=' + no,
+    })
   }
+
 })

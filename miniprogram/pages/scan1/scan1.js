@@ -1,25 +1,10 @@
-// pages/list/list.js
-const app = new getApp();
-
+// pages/scan1/scan1.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list: [{
-      list_name: "",
-      list_title: "此处应该是一个快递编号",
-      list_img: ""
-    }, {
-      list_name: "",
-      list_title: "此处应该是一个快递编号",
-      list_img: ""
-    }, {
-      list_name: "",
-      list_title: "此处应该是一个快递编号",
-      list_img: ""
-    }]
 
   },
 
@@ -27,12 +12,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
-    that.setData({
-      num: options.numData,
-      phonenum: options.phonenumData,
-      msg:options.msgData
-    })
 
   },
 
@@ -49,7 +28,7 @@ Page({
   onShow: function () {
     if (typeof this.getTabBar === 'function' && this.getTabBar()){
       this.getTabBar().setData({
-        selected: 1
+        selected: 0
       })
     }
   },

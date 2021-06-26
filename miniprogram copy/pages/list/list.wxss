@@ -1,0 +1,46 @@
+/* pages/list/list.wxss */
+.list {
+  position: relative;
+  top: 20rpx;
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  margin-bottom: 15rpx;
+  font-size: 30rpx;
+  background-color: #fff;
+}
+ 
+/* 标题 */
+ 
+.list_title {
+  position: absolute;
+  width: 500rpx;
+  height: 100rpx;
+  left: 30rpx;
+}
+ 
+/* 功能视图 */
+ 
+.list_base_list {
+  position: absolute;
+  width: 273rpx;
+  height: 100rpx;
+  padding: 0rpx 10rpx;
+  line-height: 100rpx;
+  float: left;
+  right: 0rpx;
+}
+ 
+/* 添加 */
+ 
+.list_add {
+  width: 80rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  padding: 10rpx 10rpx;
+  margin: 5rpx 10rpx;
+  font-size: 28rpx;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+}

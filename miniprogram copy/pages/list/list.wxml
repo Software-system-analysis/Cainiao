@@ -1,0 +1,18 @@
+<!--pages/list/list.wxml-->
+<!--<view>
+  <text>分仓编号：{{num}}</text>
+</view>
+<view>
+  <text>收件号码：{{phonenum}}</text>
+</view>
+<view>
+  <text>运单编号：{{msg}}</text>
+</view>-->
+  <view class='list' wx:for="{{list}}" wx:key="key">
+    <label class='list_title'>{{item.list_title}}</label>
+    <view class='list_base_list'>
+      <label class='list_add'>添加</label>
+      <label class='list_add'>修改</label>
+      <label class='list_add'>删除</label>
+    </view>
+  </view>
