@@ -97,7 +97,6 @@ Page({
   },
   changeUserKind: function (e) {
     user_kind=e.detail.value;
-    console.log('radio发生change事件，携带value值为：', user_kind)
   },
   registerFactory:function(role,userid) {//简单工厂函数
     console.log("factory start");
@@ -108,10 +107,11 @@ Page({
       this.id=userid;
       console.log("producing user");
     }
-    switch(role){
+    switch(role){//根据注册选择的账户类型创建用户对象
+      /*
       case "USER":
         return new user({name:register_name,password:register_password,kind:"用户"});
-        break;
+        break;*/
       case "BRANCH_DEPOSITORY_MANAGER":
         return new user({name:register_name,password:register_password,kind:"分仓管理员"});
         break;
@@ -127,7 +127,8 @@ Page({
         //console.log(register_name+' '+register_password+' '+confirm_password+' '+user_kind);
        if(register_name&&register_password&&confirm_password){
         for (let i = 0; i < user_register_info.length; i++) {  //遍历数据库对象集合
-          if (register_name === user_register_info[i].user_name) { //用户名存在
+          if (register_name === user_register_info[i].user_name) { 
+            //对比数据库里已有的用户名，若输入的用户名有重复则输出提示信息
             wx.showToast({
               title: '用户已存在！！',
               icon: 'none',
@@ -143,18 +144,20 @@ Page({
             })
           }
           else if(register_password.length<8||register_password.length>24){
+            //检查密码长度
             wx.showToast({
               title: '密码长度必须为8~24位！！',
               icon: 'none',
               duration: 500
             })
           }
-          else{
+          else{//若输入的信息符合要求则生成相应的用户对象存入数据库
             console.log("success "+register_name+' '+register_password+' '+confirm_password+' '+user_kind);
             let new_user=this.registerFactory(user_kind,user_register_info.length+1);
             console.log("factory has produced a new accout:"+new_user.name+' '+new_user.password+' '+new_user.kind+' '+new_user.id);
             if(new_user.kind == "总仓管理员"){
             user_register.add({
+
               data:{
                 password:new_user.password,
                 user_id:1,
@@ -185,8 +188,24 @@ Page({
               wx.navigateTo({   //跳转首页
                 url: '../demo/demo',  
               })}
+              /*
+              if(new_user.kind == "用户"){
+                user_register.add({
+    
+                  data:{
+                    password:new_user.password,
+                    user_id:3,
+                    user_name:new_user.name,
+                    userid:new_user.kind
+                  },
+                  success(res){
+                    console.log('注册成功');
+                  }
+                })}
+                */
+
           }      
-      }
+        }
       else{
         wx.showToast({
           title: '请填写完整的注册信息！',

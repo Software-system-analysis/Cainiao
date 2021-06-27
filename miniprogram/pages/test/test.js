@@ -31,10 +31,10 @@ Page({
 
   scanCode: function() {
     var that = this;
-    wx.scanCode({ //扫描API
-      success(res) { //扫描成功
-        console.log(res) //输出回调信息
-        that.setData({
+    wx.scanCode({ //扫描API     
+      success(res) { //扫描成功       
+        console.log(res) //输出回调信息  
+          that.setData({
           scanCodeMsg: res.result
         });
         wx.showToast({
@@ -51,7 +51,8 @@ Page({
       data:{
         num: num,
         phonenum: phonenum,
-        scanCodeMsg: scanCodeMsg
+        scanCodeMsg: scanCodeMsg,
+        state :'已分仓'
       },
       success(res){
         console.log('success')
@@ -59,8 +60,6 @@ Page({
       fail(res){
         console.log('fail')
       }
-      
-      
     });
     
     
@@ -70,7 +69,7 @@ Page({
       scanCodeMsg:null
     })
     wx.switchTab({
-      url: '../list/list?numData='+that.data.num+'&phonenumData='+that.data.phonenum+'&msgData='+that.data.scanCodeMsg+'',
+      url: '../list/list'
     });
   },
   /**

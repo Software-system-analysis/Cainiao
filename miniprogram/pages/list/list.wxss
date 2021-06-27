@@ -23,7 +23,7 @@
  
 .list_base_list {
   position: absolute;
-  width: 273rpx;
+  width: 300rpx;
   height: 100rpx;
   padding: 0rpx 10rpx;
   line-height: 100rpx;
@@ -40,7 +40,7 @@
   padding: 10rpx 10rpx;
   margin: 5rpx 10rpx;
   font-size: 28rpx;
-  background-color: #333;
+  background-color: rgb(164, 243, 219);
   color: #fff;
   text-align: center;
 }

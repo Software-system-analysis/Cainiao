@@ -33,7 +33,7 @@ Component({
             "iconPath": "/image/home.png",
             "selectedIconPath": "/image/home.png"
           },{
-            "pagePath": "/pages/list1/list1",
+            "pagePath": "/pages/list/list",
             "text": "详细",
             "iconPath": "/image/list.jpg",
             "selectedIconPath": "/image/list.jpg"

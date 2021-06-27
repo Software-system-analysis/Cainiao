@@ -1,2 +1,26 @@
 <!--pages/scan1/scan1.wxml-->
-<text>pages/scan1/scan1.wxml</text>
+<view class="container1">
+<view class='form-list'>
+  
+  <text>货架编号:</text>
+  <input bind:change='inputNum' type='text' id="number" value='{{num}}'></input>
+  
+</view>
+
+
+<view class='form-list'>
+  
+  <text>运单编号:</text>
+  <input bind:change='inputMsg' type='text' id="number" value='{{scanCodeMsg}}'></input>
+  <image class='scan' bindtap='scanCode' src='../test/img/scannum.jpg' mode='widthFix'></image>
+  
+</view>
+
+<button id="submit" bindtap="buttonListen">上 架</button>
+
+
+<button id="submit1" bindtap="buttonListen1">取 件</button>
+
+</view>
+
+

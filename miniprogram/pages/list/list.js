@@ -1,5 +1,7 @@
 // pages/list/list.js
 const app = new getApp();
+const db = wx.cloud.database({});
+const cont = db.collection('expressage');
 
 Page({
 
@@ -7,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    list: [{
+    /*list: [{
       list_name: "",
       list_title: "此处应该是一个快递编号",
       list_img: ""
@@ -19,7 +21,8 @@ Page({
       list_name: "",
       list_title: "此处应该是一个快递编号",
       list_img: ""
-    }]
+    }]*/
+    ne:[]
 
   },
 
@@ -28,11 +31,22 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    that.setData({
+    const db = wx.cloud.database({
+      env:'rjxtfx-9ganomild41a3d96'
+    })
+    db.collection('expressage').get({
+      success:res =>{
+        console.log(res.data)
+        this.setData({
+          ne:res.data
+        })
+      }
+    })
+    /*that.setData({
       num: options.numData,
       phonenum: options.phonenumData,
       msg:options.msgData
-    })
+    })*/
 
   },
 
@@ -72,7 +86,11 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    wx.showToast({
+      title: '加载中',
+      duration: 1000
+    })
+    this.onLoad();
   },
 
   /**
