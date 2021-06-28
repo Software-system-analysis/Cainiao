@@ -5,7 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    myinfo:null
+    myinfo:null,
+    name:null,
+    id:null
   },
 
   /**
@@ -13,7 +15,9 @@ Page({
    */
   onLoad: function (options) {
     var stu = wx.getStorageSync('student');
-    this.setData({ myinfo: stu});
+    var name0 = wx.getStorageSync('name');
+    var id0 = wx.getStorageSync('id');
+    this.setData({ myinfo: stu,name:name0,id:id0});
   },
 
    /**
