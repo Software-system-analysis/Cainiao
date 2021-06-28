@@ -123,11 +123,15 @@ Page({
                 duration: 500
               })
               if(userinfo[i].user_id == 1){
+                wx.setStorageSync('id', userinfo[i].user_id)//缓存rolrid
+                wx.setStorageSync('name', userinfo[i].user_name);
                 wx.switchTab({   //跳转首页
                 url: '../test/test',  //这里的URL是你登录完成后跳转的界面
               })
               }
               if(userinfo[i].user_id == 2){
+                wx.setStorageSync('id', userinfo[i].user_id)//缓存rolrid
+                wx.setStorageSync('name', userinfo[i].user_name);
                 wx.switchTab({   //跳转首页
                   url: '../scan1/scan1',  //这里的URL是你登录完成后跳转的界面
                 })
