@@ -8,11 +8,11 @@
 <view>
   <text>运单编号：{{msg}}</text>
 </view>-->
-  <view class='list' wx:for="{{ne}}" wx:key="key">
+  <view class='list' wx:for="{{ne}}" >
     <label class='list_title'>{{item.scanCodeMsg}}</label>
     <view class='list_base_list'>
       <label class='list_add'>{{item.state}}</label>
       <label class='list_add'>修改</label>
-      <label class='list_add'>详情</label>
+      <label class='list_add' bindtap='detail' data-searchid='{{item.scanCodeMsg}}'>详情</label>
     </view>
   </view>
