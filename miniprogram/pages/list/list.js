@@ -43,6 +43,7 @@ Page({
             wx.setStorageSync('detailnum', searchinfo[i].num)
             wx.setStorageSync('detailphone', searchinfo[i].phonenum)
             wx.setStorageSync('detailstate', searchinfo[i].state)
+            wx.setStorageSync('detailgoods', searchinfo[i].goods)
             wx.navigateTo({
               url: '../info1/info1',
             })

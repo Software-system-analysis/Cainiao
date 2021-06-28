@@ -6,7 +6,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    myinfo:null
+    myinfo:null,
+    detailnum:null,
+    detailmsg:null,
+    detailstate:null,
+    detailphone:null,
+    detailgoods:null
   },
   back:function(){
     wx.navigateBack({
@@ -20,7 +25,14 @@ Page({
    */
   onLoad: function (options) {
     var stu = wx.getStorageSync('student');
-    this.setData({ myinfo: stu});
+    this.setData({ 
+      myinfo: stu,
+      detailnum:wx.getStorageSync('detailnum'),
+      detailmsg:wx.getStorageSync('detailmsg'),
+      detailstate:wx.getStorageSync('detailstate'),
+      detailphone:wx.getStorageSync('detailphone'),
+      detailgoods:wx.getStorageSync('detailgoods')
+    });
   },
 
    /**

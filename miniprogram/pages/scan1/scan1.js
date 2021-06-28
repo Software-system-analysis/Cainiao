@@ -52,7 +52,8 @@ Page({
             var id = expressageinfo[i]._id;
             db.collection('expressage').doc(id).update({
               data:{
-                state:'已上架'
+                state:'已上架',
+                goods:num
               }
             })
           }}

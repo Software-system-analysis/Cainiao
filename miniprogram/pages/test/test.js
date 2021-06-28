@@ -63,7 +63,8 @@ Page({
         num: this.data.num,
         phonenum: this.data.phonenum,
         scanCodeMsg: this.data.scanCodeMsg,
-        state :'已分仓'
+        state :'已分仓',
+        goods:null
       },
       success(res){
         console.log('success')
