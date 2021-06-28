@@ -1,0 +1,61 @@
+{
+  "pages":[
+    "pages/demo/demo",
+    "pages/test/test",
+    "pages/list/list",
+    "pages/info/info",
+    "pages/list1/list1",
+    "pages/scan1/scan1",
+    "pages/info1/info1",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/register/register"
+  ],
+  "window":{
+    
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "custom":true,
+    "list": [
+      {
+        "pagePath": "pages/test/test",
+        "text": "主页",
+        "iconPath": "pages/demo/image/home.png",
+        "selectedIconPath": "pages/demo/image/home.png"
+      },
+    {
+      "pagePath": "pages/list/list",
+      "text": "详细",
+      "iconPath": "pages/demo/image/list.jpg",
+      "selectedIconPath": "pages/demo/image/list.jpg"
+    },
+    {
+      "pagePath": "pages/info/info",
+      "text": "个人",
+      "iconPath": "pages/demo/image/info.png",
+      "selectedIconPath": "pages/demo/image/info.png"
+    },
+    {
+      "pagePath": "pages/list1/list1",
+      "text": "详细",
+      "iconPath": "pages/demo/image/list.jpg",
+      "selectedIconPath": "pages/demo/image/list.jpg"
+    },
+    {
+      "pagePath": "pages/scan1/scan1",
+      "text": "主页",
+      "iconPath": "pages/demo/image/home.png",
+      "selectedIconPath": "pages/demo/image/home.png"
+    }
+    ]
+  },
+
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "usingComponents":{}
+}

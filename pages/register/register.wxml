@@ -1,0 +1,42 @@
+<!--pages/register/register.wxml-->
+<view id="total">
+  <form bindsubmit="create_login">
+    <view id="t1" style="position: relative; left: 0rpx; top: 263rpx">
+      <text style="position: relative; left: 15rpx; top: 41rpx">账号</text>
+      <input bind:change='inputRegisterName' type="text" name="username" id="use" placeholder="输入您的用户名" value="{{name}}" style="position: relative; left: 12rpx; top: -25rpx"></input>
+    </view>
+    <view class="person_info" >
+    <text class="person_info_text">工作人员类型</text>
+    <view class="sex-box" id='radio_userkind'>
+        <radio-group name="user_kind" bindchange="changeUserKind">
+            <!--
+            <radio  class="radio-item" value="USER" checked="checked"  >
+                用户
+            </radio>
+            -->
+            <radio  class="radio-item" value="BRANCH_DEPOSITORY_MANAGER" checked="" >
+                分仓管理员
+            </radio>
+            <radio  class="radio-item" value="MAIN_DEPOSITORY_MANAGER" checked="" >
+                总仓管理员
+            </radio>
+        </radio-group>
+    </view>
+</view>
+    <view id="t2" style="position: relative; left: 0rpx; top: 190rpx">
+      <text style="position: relative; left: 12rpx; top: 41rpx">密码</text>
+      <input bind:change='inputRegisterPassword' type="password" name="password" id="pass1" placeholder="输入8~20位密码"
+        value="{{password}}"></input>
+    </view>
+    <view id="t2" style="position: relative; left: 0rpx; top: 233rpx">
+      <text style="position: relative; left: 10rpx; top: 41rpx">确认密码</text>
+      <input bind:change='inputConfirmPassword' type="password" name="password" id="pass1" placeholder="确认您的密码"
+        value="{{password}}"></input>
+    </view>
+    
+    <button bindtap="gotoRegisterNewuser" id="btn1"  style="position: relative; left: 0rpx; top: 277rpx"><text>注册</text></button>
+    <!--form-type="submit" -->
+
+    <text style="position: relative; left: 338rpx; top: -499rpx">注册</text>
+  </form>
+  </view>

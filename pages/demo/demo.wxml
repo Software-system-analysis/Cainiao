@@ -1,0 +1,26 @@
+<!--pages/demo/demo.wxml-->
+<view id="total">
+  <form bindsubmit="create_login">
+    <view id="t1">
+      <text>账号</text>
+      <input bind:change='inputName' type="text" name="username" id="use" placeholder="输入您的账号" value="{{name}}"></input>
+    </view>
+    <view id="t2" style="position: relative; left: 0rpx; top: 267rpx">
+      <text>密码</text>
+      <input bind:change='inputPassword' type="password" name="password" id="pass1" placeholder="输入您的密码"
+        value="{{password}}"></input>
+    </view>
+
+    <button bindtap="goto_index" id="btn1" form-type="submit"><text>登录</text></button>
+
+    <text style="position: relative; left: 338rpx; top: -235rpx">登录</text>
+  </form>
+
+  <button bindtap="goto_register" id="btn2" form-type="submit"><text>注册</text></button>
+  <button bindtap="goto_update" id="btn3" style="position: relative; left: 200rpx; top: 275rpx"><text>忘记密码</text></button>
+
+
+
+
+  
+  </view>

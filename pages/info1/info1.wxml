@@ -1,0 +1,27 @@
+<!--pages/info1/info1.wxml-->
+<view id="total">
+   <form bindsubmit="create_login">
+    <view id="t1">
+      <text class='text2'>快递单号：</text>
+      <text class="text0" >{{detailmsg}}</text>
+    </view>
+    <view class="t2" >
+      <text class="text2">手机号码：</text>
+      <text class="text0">{{detailphone}}</text>
+    </view>
+    <view class="t2" >
+      <text class="text2">快递状态：</text>
+      <text class="text0" >{{detailstate}}</text>
+    </view>
+    <view class="t2" >
+      <text class="text2">分仓号：</text>
+      <text class="text0" >{{detailnum}}</text>
+    </view>
+    <view class="t2" >
+      <text class="text2">货架号：</text>
+      <text class="text0" >{{detailgoods}}</text>
+    </view>
+
+    <button bindtap="back"><text>返 回</text></button>
+  </form>
+</view>
