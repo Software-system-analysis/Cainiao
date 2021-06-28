@@ -3,9 +3,7 @@
 let app = getApp();
 const db = wx.cloud.database();
 const expressage = db.collection('expressage');
-let num = null;
-let phonenum = null;
-let scanCodeMsg = null;
+
 
 Page({
 
@@ -13,19 +11,32 @@ Page({
    * 页面的初始数据
    */
   data: {
+    num : null,
+    phonenum : null,
+    scanCodeMsg :null
   },
 
   inputNum:function(event){
-    num = event.detail.value;
-    console.log('ing')
+    let num0 = event.detail.value;
+    console.log('ing');
+    this.setData({
+      num:num0
+    })
   },
 
   inputPhone:function(event){
-    phonenum = event.detail.value
+    let phonenum0 = event.detail.value;
+    this.setData({
+      phonenum : phonenum0
+    })
+
   },
 
   inputMsg:function(event){
-    scanCodeMsg = event.detail.value
+    let scanMsg = event.detail.value;
+    this.setData({
+      scanCodeMsg:scanMsg
+    })
   },
 
 
@@ -49,9 +60,9 @@ Page({
     var that = this;
     db.collection('expressage').add({
       data:{
-        num: num,
-        phonenum: phonenum,
-        scanCodeMsg: scanCodeMsg,
+        num: this.data.num,
+        phonenum: this.data.phonenum,
+        scanCodeMsg: this.data.scanCodeMsg,
         state :'已分仓'
       },
       success(res){
