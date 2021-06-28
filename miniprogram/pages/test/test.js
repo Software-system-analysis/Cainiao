@@ -87,7 +87,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var staff_name=wx.getStorageSync('username');
+    console.log("Enter Page test");
+    console.log('test:'+staff_name+' '+wx.getStorageSync('userid'));
   },
 
   /**
@@ -106,6 +108,7 @@ Page({
         selected: 0
       })
     }
+    
   },
 
   /**

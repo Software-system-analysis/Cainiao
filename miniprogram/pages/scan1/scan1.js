@@ -74,7 +74,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var staff_name=wx.getStorageSync('username');
+    console.log("Enter Page scan1");
+    console.log('scan1: '+staff_name+' '+wx.getStorageSync('userid'));
   },
 
   buttonListen1: function(res){
@@ -111,7 +113,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var staff_name=wx.getStorageSync('username');
+    console.log("Enter Page scan1");
+    console.log('test:'+staff_name+' '+wx.getStorageSync('userid'));
   },
 
   /**

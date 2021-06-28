@@ -17,6 +17,12 @@ Page({
     var stu = wx.getStorageSync('student');
     var name0 = wx.getStorageSync('name');
     var id0 = wx.getStorageSync('id');
+
+    switch (id0){
+       case 1: id0="总仓管理员";break;
+       case 2: id0="分仓管理员";break;   
+    }
+
     this.setData({ myinfo: stu,name:name0,id:id0});
   },
 
@@ -93,8 +99,9 @@ Page({
   },
 resetpwd:function(e){
     var no=this.data.myinfo.no;
+    console.log(no);
     wx.navigateTo({
-      url: '../password/password?no=' + no,
+      url: '../resetpwd/resetpwd?no=' + no,
     })
   },
   setemail: function (e) {
