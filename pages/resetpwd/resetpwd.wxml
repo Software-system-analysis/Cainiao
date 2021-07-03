@@ -1,2 +1,10 @@
 <!--pages/resetpwd/resetpwd.wxml-->
-<text>pages/resetpwd/resetpwd.wxml</text>
+
+<input style="position: absolute; left: 0rpx; top: 446rpx; width: 537rpx; height: 71rpx; display: block; box-sizing: border-box"  type="text" id="code" name="codeImg" placeholder-class='C3' bindinput='codeImg' placeholder="请输入图形验证码" maxlength="4" value='{{imgCode}}'/>
+<view style='position:relative;' bindtap="onTap">
+<canvas style="width: 165rpx; height: 70rpx; position: absolute; right: 0rpx; bottom: 10rpx; text-align: center; z-index: 9999; left: 544rpx; top: 448rpx" canvas-id="canvas"></canvas>
+</view>
+<button type="primary" style="position: relative; left: 0rpx; top: 715rpx" bindtap="resetPassword">修改密码</button>
+
+
+
