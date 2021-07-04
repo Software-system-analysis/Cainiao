@@ -75,7 +75,7 @@ Page({
   codeImg:function(event) {
     this.data.imgCode=event.detail.value;
   },
-  resetPassword:function (res) {
+  resetPasswordNext:function (res) {
     console.log(this.data.imgCode);
    
     var res = this.mcaptcha.validate(this.data.imgCode);
@@ -98,6 +98,9 @@ Page({
         title: '验证码正确！！',
         icon: 'none',
         duration: 500
+      })
+      wx.navigateTo({   //跳转首页
+        url: '../resetpwdfinal/resetpwdfinal',  
       })
     }
   }

@@ -18,7 +18,7 @@
       <text class='left'>身份</text><text class='right'>{{id}}</text>
     </view>
     <view class='item' bindtap='resetpwd'>
-     <text class='left'> 更改密码</text><text class='right'>>>></text>
+     <text class='left'> 更改账户</text><text class='right'>>>></text>
     </view>
     <view class='item'>
       <text class='left'>设置</text><text class='right'>>>></text>
