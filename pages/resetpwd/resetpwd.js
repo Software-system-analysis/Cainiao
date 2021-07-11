@@ -10,7 +10,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imgCode:''
+    imgCode:'',
+    user_name_for_check:'',
   },
 
   /**
@@ -19,7 +20,7 @@ Page({
   onLoad: function (options) {
     get_name=wx.getStorageSync('name');
     get_password=wx.getStorageSync('password');
-    console.log(get_name+' '+get_password);
+    //this.setData({user_name_for_check:wx.getStorageSync('name'),})
   },
 
   /**
@@ -90,6 +91,7 @@ Page({
 
   resetPasswordNext:function (res) {
     console.log(this.data.imgCode);
+    console.log(check_name);
     var res = this.mcaptcha.validate(this.data.imgCode);
     if(check_name&&check_password&&this.data.imgCode){
       if(check_name!=get_name){
@@ -117,7 +119,6 @@ Page({
           })
         }
         */
-       
         if (!res) {
           wx.showToast({
             title: '验证码错误！！',
@@ -131,6 +132,9 @@ Page({
             icon: 'none',
             duration: 500
           })
+          wx.setStorageSync('reseting_name', check_name);
+          wx.setStorageSync('reseting_password', check_password);
+          console.log(wx.getStorageSync('reseting_name')+' '+wx.getStorageSync('reseting_password'));
           wx.navigateTo({   //跳转至下一步
             url: '../resetpwdfinal/resetpwdfinal',  
           })

@@ -1,8 +1,6 @@
 // pages/register/register.js
-//const dbStaff = wx.cloud.database();
 const dbUser=wx.cloud.database();
 const user_register = dbUser.collection('user');
-//const staff=dbStaff.collection('staff');
 let user_kind='USER';
 let register_name=null;
 let register_password=null;
@@ -16,9 +14,12 @@ Page({
     
 
   },
+  /*
   goto_register_newuser:function(res){
 
   },
+  */
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -120,7 +121,7 @@ Page({
         break;
     }
   },
-  gotoRegisterNewuser:function(res){
+  gotoRegisterNewUser:function(res){
     user_register.get({
       success:(res)=>{
         let user_register_info = res.data;
@@ -188,21 +189,7 @@ Page({
               wx.navigateTo({   //跳转首页
                 url: '../demo/demo',  
               })}
-              /*
-              if(new_user.kind == "用户"){
-                user_register.add({
-    
-                  data:{
-                    password:new_user.password,
-                    user_id:3,
-                    user_name:new_user.name,
-                    userid:new_user.kind
-                  },
-                  success(res){
-                    console.log('注册成功');
-                  }
-                })}
-                */
+              
 
           }      
         }

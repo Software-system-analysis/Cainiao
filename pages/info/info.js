@@ -15,7 +15,7 @@ Page({
     var stu = wx.getStorageSync('student');
     var name0 = wx.getStorageSync('name');
     var id0 = wx.getStorageSync('id');
-
+    console.log('缓存的用户名：'+name0);
     switch (id0){
        case 1: id0="总仓管理员";break;
        case 2: id0="分仓管理员";break;   

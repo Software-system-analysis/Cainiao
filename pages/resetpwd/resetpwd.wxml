@@ -2,7 +2,7 @@
 
 <view id="t1" style="position: relative; left: 0rpx; top: 263rpx; width: 750rpx; height: 94rpx; display: block; box-sizing: border-box">
       <text style="position: relative; left: 71rpx; top: -3rpx">账号</text>
-      <input bind:change='inputNameCheck' type="text" name="username" id="use" placeholder="输入当前登录账号的用户名" value="{{name}}" style="position: absolute; left: 209rpx; top: -4rpx; width: 537rpx; height: 52rpx; display: block; box-sizing: border-box"></input>
+      <input bind:change='inputNameCheck' type="text" name="username" id="use" placeholder="输入当前登录账号的用户名" value="{{ user_name_for_check}}" style="position: absolute; left: 209rpx; top: -4rpx; width: 537rpx; height: 52rpx; display: block; box-sizing: border-box"></input>
 </view>
 
     <view id="t2" style="position: relative; left: 0rpx; top: 190rpx">
