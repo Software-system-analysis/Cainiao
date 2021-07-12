@@ -1,11 +1,14 @@
 // pages/info/info.js
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    myinfo:null
+    myinfo:null,
+    name:null,
+    id:null
   },
 
   /**
@@ -21,8 +24,16 @@ Page({
        case 2: id0="分仓管理员";break;   
     }
 
-    this.setData({ myinfo: stu,name:name0,id:id0});
+
+    this.setData({ 
+      myinfo: stu,
+      name:name0,
+      id:id0
+    });
+
   },
+
+  
 
    /**
    * 生命周期函数--监听页面初次渲染完成

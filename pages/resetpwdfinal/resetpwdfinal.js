@@ -1,33 +1,40 @@
 // pages/resetpwdfinal/resetpwdfinal.js
 const dbUser=wx.cloud.database();
 const user_reset = dbUser.collection('user');
-let new_name=null;
-let new_password=null;
-let old_name=null;
-let old_password=null;
+let dataId=null;
 let confirm_password=null;
-let user_kind=null;
+var temp_userkind=null;
+let info;
 Page({
-
+  
   /**
    * 页面的初始数据
    */
   data: {
     set_name_value:'',
-    set_kind_value:'',
     set_main_manager:'',
     set_branch_manager:'',
+    new_name:null,
+    new_password:null,
+    confirm_password:null,
+    user_kind:null,
+    set_new_kind:'',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    user_kind=wx.getStorageSync('id');
-    new_name=wx.getStorageSync('reseting_name');
-    new_password=wx.getStorageSync('reseting_password');
+    this.data.user_kind=wx.getStorageSync('id');
+    this.data.new_name=wx.getStorageSync('reseting_name');
+    user_reset.where({user_name:this.data.new_name}).get({//从数据库获取当前账户的id
+      success:(res)=> {
+        info=res.data;
+        dataId=info[0]._id;
+      }
+    });
     this.setData({set_name_value:wx.getStorageSync('reseting_name'),})
-    switch(user_kind){
+    switch(this.data.user_kind){
       case 1: {
         this.setData({set_main_manager:'true',})
         break;
@@ -37,6 +44,7 @@ Page({
         break;
       }
     }
+    
   },
   
   /**
@@ -88,19 +96,19 @@ Page({
 
   },
   resetUserKind:function(event) {
-    user_kind=event.detail.value;
+    this.data.user_kind=event.detail.value;        
   },
   inputResetName:function(event) {
-    new_name=event.detail.value;
+    this.data.new_name=event.detail.value;
   },
   inputResetPassword:function(event) {
-    new_password=event.detail.value;
+    this.data.new_password=event.detail.value;
   },
   inputConfirmResetPassword:function(event) {
-    confirm_password=event.detail.value;
+    this.data.confirm_password=event.detail.value;
   },
   cancelReset:function(res) {
-    switch(user_kind){
+    switch(this.data.user_kind){
       case 1:{//按取消按钮则跳回原来的主页
         wx.switchTab({   //跳转首页
           url: '../test/test',  
@@ -112,25 +120,65 @@ Page({
           url: '../scan1/scan1',  
         })
         break;
-      }     
-    }
-  },
+      }   
+    }      
+  },   
   resetAccount:function (res) {
-    if(new_name&&new_password&&confirm_password){
-      wx.showModal({
-        title: '确认修改?',
-        content: '修改账户后将跳转至登录页面重新登录。',
-        success: function (res) {
-          if (res.confirm) {
-            //页面跳转
-            wx.redirectTo({
-              url: '../demo/demo',
-            })
-          } else if (res.cancel) {
-            console.log('用户点击取消')
-          }
+    console.log("查询id:"+dataId+' '+this.data.new_name+' '+this.data.user_kind);
+    if(this.data.new_name&&this.data.new_password&&this.data.confirm_password){
+      if(this.data.new_password!=this.data.confirm_password){
+        wx.showToast({
+          title: '第二次输入的密码必须和新密码一致！',
+          icon: 'none',
+          duration: 1000
+        })
+      }
+      else if(this.data.new_password.length<8||this.data.new_password.length>24){
+        //检查新密码长度
+        wx.showToast({
+          title: '新密码长度必须为8~24位！！',
+          icon: 'none',
+          duration: 500
+        })
+      }
+      else{
+        console.log(this.data.user_kind);
+        if(this.data.user_kind=="1"){//设置用户类型
+          this.data.set_new_kind='总仓管理员';
+          temp_userkind=1;
         }
-      })
+        else{
+          this.data.set_new_kind='分仓管理员';
+          temp_userkind=2;
+        }       
+        var temp_name=this.data.new_name;
+        var temp_password=this.data.new_password;
+        var temp_set_kind=this.data.set_new_kind;
+        console.log(temp_userkind+' '+temp_set_kind);
+        wx.showModal({
+          title: '确认修改?',
+          content: '修改账户后将跳转至登录页面重新登录。',
+          success: function (res) {
+            if (res.confirm) {
+              user_reset.doc(dataId).update({//修改数据库中的账户信息
+                data:{
+                  password:temp_password,
+                  user_id:temp_userkind,
+                  user_name:temp_name,
+                  userid:temp_set_kind,
+                },
+                success:(res) =>{
+                  console.log("修改完成");
+                }
+              })
+              //页面跳转
+              wx.redirectTo({
+                url: '../demo/demo',
+              })
+            } else if (res.cancel) {}
+          }
+        })
+      }   
     }
     else{
       wx.showToast({
@@ -139,6 +187,5 @@ Page({
         duration: 1000
       })
     }
-    console.log("账户"+user_kind+" "+new_name);
   }
 })

@@ -1,7 +1,7 @@
 // pages/register/register.js
 const dbUser=wx.cloud.database();
 const user_register = dbUser.collection('user');
-let user_kind='USER';
+let user_kind='BRANCH_DEPOSITORY_MANAGER';
 let register_name=null;
 let register_password=null;
 let confirm_password=null;

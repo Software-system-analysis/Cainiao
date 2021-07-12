@@ -3,13 +3,13 @@
   <form bindsubmit="create_login">
     <view id="t1" style="position: relative; left: 127rpx; top: 296rpx; width: 547rpx; height: 101rpx; display: block; box-sizing: border-box">
       <text style="position: relative; left: -61rpx; top: 53rpx">用户名</text>
+
       <input bind:change='inputResetName'  type="text" name="username" id="use" placeholder="输入您的新用户名" value='{{set_name_value}}' style="position: relative; left: 94rpx; top: -10rpx; width: 547rpx; height: 75rpx; display: block; box-sizing: border-box"></input>
     </view>
     <view class="person_info" >
     <text class="person_info_text" style="position: absolute; left: 40rpx; top: 193rpx">工作人员类型</text>
     <view class="sex-box" id='radio_userkind'>
         <radio-group name="reset_user_kind" bindchange="resetUserKind" style="position: absolute">
-           
             <radio  class="radio-item" value="2" checked="{{set_branch_manager}}"  style="position: absolute; width: 284rpx; height: 59rpx; display: block; box-sizing: border-box; left: 36rpx; top: 158rpx">
                 分仓管理员
             </radio>
@@ -22,7 +22,7 @@
     <view id="t2" style="position: relative; left: 0rpx; top: 190rpx">
       <text style="position: relative; left: 64rpx; top: 151rpx">密码</text>
       <input bind:change='inputResetPassword' type="password" name="password" id="pass1" placeholder="输入8~20位新密码"
-        value="{{password}}" style="width: 558rpx; height: 78rpx; display: block; box-sizing: border-box; left: 221rpx; top: 136rpx; position: absolute"></input>
+        value="{{password}}" style="width: 558rpx; height: 78rpx; display: block; box-sizing: border-box; left: 216rpx; top: 136rpx; position: absolute"></input>
     </view>
     <view id="t2" style="position: relative; left: 0rpx; top: 233rpx">
       <text style="position: relative; left: 26rpx; top: 152rpx">确认密码</text>

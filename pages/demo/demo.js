@@ -114,8 +114,9 @@ Page({
             } else {
 
               console.log('登录成功！')
-
               wx.setStorageSync('userid', userinfo[i].user_id)//缓存rolrid
+
+              
 
               wx.showToast({
                 title: '登录成功！！',
