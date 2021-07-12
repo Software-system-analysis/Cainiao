@@ -9,11 +9,7 @@
     <text class="person_info_text">工作人员类型</text>
     <view class="sex-box" id='radio_userkind'>
         <radio-group name="user_kind" bindchange="changeUserKind">
-<<<<<<< HEAD
             <radio  class="radio-item" value="BRANCH_DEPOSITORY_MANAGER" checked="true" >
-=======
-            <radio  class="radio-item" value="BRANCH_DEPOSITORY_MANAGER" checked="" >
->>>>>>> 6.29
                 分仓管理员
             </radio>
             <radio  class="radio-item" value="MAIN_DEPOSITORY_MANAGER" checked="" >
