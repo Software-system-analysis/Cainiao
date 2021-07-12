@@ -157,5 +157,24 @@ Page({
       url: '../register/register',
     })
 
+  },
+  //外观模式
+  btn0:function(kind){
+    
+    if(kind=='btn1'){
+      console.log('success')
+      this.goto_index()
+    }
+    else if(kind=='btn2'){
+      console.log('success1')
+      this.goto_register()
+    }
+    else{console.log('未完善')}
+  } ,
+  btn:function(e){
+    var kind = e.currentTarget.id;
+    console.log(kind)
+    this.btn0(kind);
   }
+
 })

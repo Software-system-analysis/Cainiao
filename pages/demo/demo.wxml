@@ -11,13 +11,13 @@
         value="{{password}}"></input>
     </view>
 
-    <button bindtap="goto_index" id="btn1" form-type="submit"><text>登录</text></button>
+    <button bindtap="btn" id="btn1" form-type="submit"><text>登录</text></button>
 
     <text style="position: relative; left: 338rpx; top: -235rpx">登录</text>
   </form>
 
-  <button bindtap="goto_register" id="btn2" form-type="submit"><text>注册</text></button>
-  <button bindtap="goto_update" id="btn3" style="position: relative; left: 200rpx; top: 275rpx"><text>忘记密码</text></button>
+  <button bindtap="btn" id="btn2" form-type="submit"><text>注册</text></button>
+  <button bindtap="btn" id="btn3" style="position: relative; left: 200rpx; top: 275rpx"><text>忘记密码</text></button>
 
 
 
