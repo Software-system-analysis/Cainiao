@@ -34,7 +34,7 @@
         value="{{password}}"></input>
     </view>
     
-    <button bindtap="gotoRegisterNewuser" id="btn1"  style="position: relative; left: 0rpx; top: 277rpx"><text>注册</text></button>
+    <button bindtap="gotoRegisterNewUser" id="btn1"  style="position: relative; left: 0rpx; top: 277rpx"><text>注册</text></button>
     <!--form-type="submit" -->
 
     <text style="position: relative; left: 338rpx; top: -499rpx">注册</text>
