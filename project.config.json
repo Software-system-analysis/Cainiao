@@ -22,21 +22,15 @@
     "checkSiteMap": true,
     "uploadWithSourceMap": true,
     "compileHotReLoad": false,
-
-
     "useMultiFrameRuntime": false,
     "useApiHook": true,
     "useApiHostProcess": false,
-
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
     },
     "enableEngineNative": false,
-
-    "bundle": false,
-
     "useIsolateContext": true,
     "useCompilerModule": true,
     "userConfirmedUseCompilerModuleSwitch": false,
@@ -48,7 +42,7 @@
   "compileType": "miniprogram",
   "libVersion": "2.17.3",
   "appid": "wx7fce3b1ae7ea142e",
-  "projectname": "last",
+  "projectname": "miniprogram_1",
   "debugOptions": {
     "hidedInDevtools": []
   },
@@ -58,8 +52,6 @@
     "servePath": ""
   },
   "isGameTourist": false,
-  "simulatorType": "wechat",
-  "simulatorPluginLibVersion": {},
   "condition": {
     "search": {
       "list": []

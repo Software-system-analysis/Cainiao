@@ -128,8 +128,6 @@ Page({
                 wx.setStorageSync('id', userinfo[i].user_id)//缓存rolrid
                 wx.setStorageSync('name', userinfo[i].user_name);
 
-
-
                 wx.setStorageSync('password', userinfo[i].password);
 
                 wx.switchTab({   //跳转首页
@@ -140,8 +138,6 @@ Page({
 
                 wx.setStorageSync('id', userinfo[i].user_id)//缓存rolrid
                 wx.setStorageSync('name', userinfo[i].user_name);
-
-
 
                 wx.setStorageSync('password', userinfo[i].password);
 

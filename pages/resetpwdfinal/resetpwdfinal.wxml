@@ -3,17 +3,23 @@
   <form bindsubmit="create_login">
     <view id="t1" style="position: relative; left: 127rpx; top: 296rpx; width: 547rpx; height: 101rpx; display: block; box-sizing: border-box">
       <text style="position: relative; left: -61rpx; top: 53rpx">用户名</text>
+
       <input bind:change='inputRegisterName'  type="text" name="username" id="use" placeholder="输入您的新用户名" value='{{set_name_value}}' style="position: relative; left: 94rpx; top: -10rpx; width: 547rpx; height: 75rpx; display: block; box-sizing: border-box"></input>
+
+      <input bind:change='inputResetName'  type="text" name="username" id="use" placeholder="输入您的新用户名" value='{{set_name_value}}' style="position: relative; left: 94rpx; top: -10rpx; width: 547rpx; height: 75rpx; display: block; box-sizing: border-box"></input>
+
     </view>
     <view class="person_info" >
     <text class="person_info_text" style="position: absolute; left: 40rpx; top: 193rpx">工作人员类型</text>
     <view class="sex-box" id='radio_userkind'>
-        <radio-group name="change_user_kind" bindchange="changeUserKind" style="position: absolute">
+
+        <radio-group name="reset_user_kind" bindchange="resetUserKind" style="position: absolute">
            
-            <radio  class="radio-item" value="BRANCH_DEPOSITORY_MANAGER" checked=""  style="position: absolute; width: 284rpx; height: 59rpx; display: block; box-sizing: border-box; left: 36rpx; top: 158rpx">
+            <radio  class="radio-item" value="2" checked="{{set_branch_manager}}"  style="position: absolute; width: 284rpx; height: 59rpx; display: block; box-sizing: border-box; left: 36rpx; top: 158rpx">
                 分仓管理员
             </radio>
-            <radio  class="radio-item" value="MAIN_DEPOSITORY_MANAGER" checked=""  style="position: absolute; width: 364rpx; height: 59rpx; display: block; box-sizing: border-box; left: 357rpx; top: 158rpx">
+            <radio  class="radio-item" value="1" checked="{{set_main_manager}}"  style="position: absolute; width: 364rpx; height: 59rpx; display: block; box-sizing: border-box; left: 357rpx; top: 158rpx">
+
                 总仓管理员
             </radio>
         </radio-group>
