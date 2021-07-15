@@ -1,25 +1,20 @@
 // pages/register/register.js
-const dbUser=wx.cloud.database();
-const user_register = dbUser.collection('user');
-let user_kind='BRANCH_DEPOSITORY_MANAGER';
+const user_register = wx.cloud.database().collection('user');
+let user_kind='BRANCH_DEPOSITORY_MANAGER';//默认工作人员类型
 let register_name=null;
 let register_password=null;
 let confirm_password=null;
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    
-
+    user_kind:'BRANCH_DEPOSITORY_MANAGER',//默认选择的工作人员类型
+    register_name:null,
+    register_password:null,
+    confirm_password:null,
+    user_id:2,
   },
-  /*
-  goto_register_newuser:function(res){
-
-  },
-  */
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -83,41 +78,44 @@ Page({
   onShareAppMessage: function () {
 
   },
-  inputRegisterName:function(event){
-      register_name=event.detail.value;
-     
-
+  inputRegisterName:function(event){     
+      this.data.register_name=event.detail.value;
   },
   inputRegisterPassword:function(event){
-      register_password=event.detail.value;
-      
+      this.data.register_password=event.detail.value;
   },
   inputConfirmPassword:function(event){
-      confirm_password=event.detail.value;
-      
+    this.data.confirm_password=event.detail.value;
   },
   changeUserKind: function (e) {
-    user_kind=e.detail.value;
+    this.data.user_kind=e.detail.value;
+    switch(this.data.user_kind){
+      case "BRANCH_DEPOSITORY_MANAGER":{
+        this.data.user_id=2;
+        break;
+      }
+      case "MAIN_DEPOSITORY_MANAGER":{
+        this.data.user_id=1;
+        break;
+      }
+    }
   },
-  registerFactory:function(role,userid) {//简单工厂函数
+  
+  registerFactory:function(role) {//简单工厂函数
     console.log("factory start");
-    function user(opt) {
-      this.name=opt.name;
-      this.password=opt.password;
-      this.kind=opt.kind; 
-      this.id=userid;
+    function user(opt,staff) {
+      this.name=opt.register_name;
+      this.password=opt.register_password;
+      this.id=opt.user_id;
+      this.kind=staff; 
       console.log("producing user");
     }
     switch(role){//根据注册选择的账户类型创建用户对象
-      /*
-      case "USER":
-        return new user({name:register_name,password:register_password,kind:"用户"});
-        break;*/
       case "BRANCH_DEPOSITORY_MANAGER":
-        return new user({name:register_name,password:register_password,kind:"分仓管理员"});
+        return new user(this.data,"分仓管理员");
         break;
       case "MAIN_DEPOSITORY_MANAGER":
-        return new user({name:register_name,password:register_password,kind:"总仓管理员"});
+        return new user(this.data,"总仓管理员");
         break;
     }
   },
@@ -125,26 +123,26 @@ Page({
     user_register.get({
       success:(res)=>{
         let user_register_info = res.data;
-        //console.log(register_name+' '+register_password+' '+confirm_password+' '+user_kind);
-       if(register_name&&register_password&&confirm_password){
+       if(this.data.register_name&&this.data.register_password&&this.data.confirm_password){
         for (let i = 0; i < user_register_info.length; i++) {  //遍历数据库对象集合
-          if (register_name === user_register_info[i].user_name) { 
+          if (this.data.register_name === user_register_info[i].user_name) { 
             //对比数据库里已有的用户名，若输入的用户名有重复则输出提示信息
             wx.showToast({
               title: '用户已存在！！',
               icon: 'none',
               duration: 500
             })
+            return;
           }
         }
-          if(register_password!=confirm_password){
+          if(this.data.register_password!=this.data.confirm_password){
             wx.showToast({
               title: '确认密码错误！！',
               icon: 'none',
               duration: 500
             })
           }
-          else if(register_password.length<8||register_password.length>24){
+          else if(this.data.register_password.length<8||this.data.register_password.length>24){
             //检查密码长度
             wx.showToast({
               title: '密码长度必须为8~24位！！',
@@ -153,34 +151,20 @@ Page({
             })
           }
           else{//若输入的信息符合要求则生成相应的用户对象存入数据库
-            console.log("success "+register_name+' '+register_password+' '+confirm_password+' '+user_kind);
-            let new_user=this.registerFactory(user_kind,user_register_info.length+1);
+            console.log("success:"+this.data.register_name+' '+this.data.register_password+' '+this.data.confirm_password+' '+this.data.user_kind);
+            let new_user=this.registerFactory(this.data.user_kind);
             console.log("factory has produced a new accout:"+new_user.name+' '+new_user.password+' '+new_user.kind+' '+new_user.id);
-            if(new_user.kind == "总仓管理员"){
             user_register.add({
-
               data:{
                 password:new_user.password,
-                user_id:1,
+                user_id:new_user.id,
                 user_name:new_user.name,
                 userid:new_user.kind
               },
               success(res){
                 console.log('注册成功');
               }
-            })}
-            if(new_user.kind == "分仓管理员"){
-              user_register.add({
-                data:{
-                  password:new_user.password,
-                  user_id:2,
-                  user_name:new_user.name,
-                  userid:new_user.kind
-                },
-                success(res){
-                  console.log('注册成功');
-                }
-              })
+            })
               wx.showToast({
                 title: '注册成功！',
                 icon: 'none',
@@ -188,9 +172,7 @@ Page({
               }) 
               wx.navigateTo({   //跳转首页
                 url: '../demo/demo',  
-              })}
-              
-
+              })
           }      
         }
       else{

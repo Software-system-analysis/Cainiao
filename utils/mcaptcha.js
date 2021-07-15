@@ -51,16 +51,16 @@ module.exports = class Mcaptcha {
     this.ctx.draw();
   }
   validate(code){
-    
-  var code = code.toLowerCase();
-  var v_code = this.options.createCodeImg.toLowerCase();
-  console.log(code)
-  console.log(v_code.substring(v_code.length - 4))
-  if (code == v_code.substring(v_code.length - 4)) {
-  return true;
-  } else {
-  return false;
-  }
+    var code = code.toLowerCase();
+    var v_code = this.options.createCodeImg.toLowerCase();
+    console.log(code)
+    console.log(v_code.substring(v_code.length - 4))
+    if (code == v_code.substring(v_code.length - 4)) {
+      return true;
+    }
+    else {
+      return false;
+    }
   }
   randomNum(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
