@@ -17,12 +17,18 @@ Page({
   },
 
   inputNum:function(event){
-    num = event.detail.value;
+    let num0 = event.detail.value;
     console.log('ing')
+    this.setData({
+      num:num0
+    })
   },
 
   inputPhone:function(event){
-    phonenum = event.detail.value
+    let phonenum0 = event.detail.value
+    this.setData({
+      phonenum:phonenum0
+    })
   },
 
   inputMsg:function(event){
