@@ -1,5 +1,42 @@
 // pages/info1/info1.js
+class initstate{
+  constructor(state0){
+    this.state0 = state0;
+  }
+  state(){
+    var a=this.state0
+    return  a
+  }
+}
+class decorator1{
+  constructor(init){
+    this.init=init;
+  }
+  state(){
+    var a=this.init.state0
+    var b=this.update()
+    var c= b+a
+    return c
+  }
+  update(){
+    return '已上架--'
+  }
+}
 
+class decorator2{
+  constructor(init){
+    this.init=init;
+  }
+  state(){
+    var a=this.init.state()
+    var b=this.update()
+    var c = b+a
+    return c
+  }
+  update(){
+    return '已取件--已上架--'
+  }
+}
 Page({
 
   /**
@@ -28,12 +65,28 @@ Page({
    * 生命周期函数--监听页面加载 
    */
   onLoad: function (options) {
-    var stu = wx.getStorageSync('student');
+    var state = wx.getStorageSync('detailstate');
+    const init = new initstate('已分仓');
+    console.log(init.state0)
+    switch(state){
+      case '已上架':
+        var a = new decorator1(init);
+        state = a.state();
+        break;
+      case '已取件':
+        var a = new decorator2(init);
+        state = a.state();
+        break;
+      case '已分仓':
+        state = init.state();
+        console.log(state)
+        break;
+    }
     this.setData({ 
-      myinfo: stu,
+      
       detailnum:wx.getStorageSync('detailnum'),
       detailmsg:wx.getStorageSync('detailmsg'),
-      detailstate:wx.getStorageSync('detailstate'),
+      detailstate:state,
       detailphone:wx.getStorageSync('detailphone'),
       detailgoods:wx.getStorageSync('detailgoods')
     });
