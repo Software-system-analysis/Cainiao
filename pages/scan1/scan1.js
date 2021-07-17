@@ -108,12 +108,12 @@ Page({
     
     expressage.get({
       success:(res)=>{
-        b.A();
         let expressageinfo = res.data;
        // console.log(res.data);
         for (let i = 0; i < expressageinfo.length; i++) {
           if(scanCodeMsg == expressageinfo[i].scanCodeMsg){
             if(expressageinfo[i].state == '已分仓'){
+            b.A();
             var id = expressageinfo[i]._id;
             db.collection('expressage').doc(id).update({
               data:{
